@@ -4,6 +4,7 @@
   "description": "validate data files containing detree decision trees",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/detree-cli.js",
+  "license": "MIT",
   "bin": "bin",
   "dependencies": {
     "detree": "^1.0.2",
