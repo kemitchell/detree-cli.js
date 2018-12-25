@@ -1,0 +1,12 @@
+{
+  "name": "detree-cli",
+  "version": "0.0.0",
+  "description": "validate data files containing detree decision trees",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
+  "repository": "kemitchell/detree-cli.js",
+  "bin": "bin",
+  "dependencies": {
+    "detree": "^1.0.2",
+    "lamos": "^3.0.4"
+  }
+}

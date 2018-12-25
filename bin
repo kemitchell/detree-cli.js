@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+var chunks = []
+process.stdin
+  .on('data', function (chunk) { chunks.push(chunk) })
+  .once('error', function (error) { throw error })
+  .once('end', function () {
+    var input = Buffer.concat(chunks).toString()
+
+    // Try a series of parsers:
+    var parsed
+    var parsers = [JSON.parse, require('lamos').parse]
+    for (var index = 0; index < parsers.length; index++) {
+      var parser = parsers[index]
+      try {
+        parsed = parser(input)
+        break
+      } catch (error) {
+        // pass
+      }
+    }
+
+    // Failed to parse:
+    if (!parsed) {
+      console.error('Could not parse input.')
+      process.exit(1)
+    }
+
+    // Validate:
+    var errors = require('detree')(parsed)
+    if (errors.length) {
+      console.error(JSON.stringify(errors, null, 2))
+      process.exit(1)
+    } else {
+      process.exit(0)
+    }
+  })
